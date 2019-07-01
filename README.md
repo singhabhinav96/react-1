@@ -1,4 +1,4 @@
-# Variables & Types
+# React Fundamentals
 
 The aim of the exercise is to understand these concepts of React
 * [ ] JSX
