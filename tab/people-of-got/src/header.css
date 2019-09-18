@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header-main {
+    background-color: blue;
+    height: 132px;
+}
+
+.heading {
+    color: white;
+    padding-top: 40px;
+    font-size: 38px;
+}
