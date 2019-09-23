@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 
 class App extends Component {
-  state = {
-    houses: []
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      active: "Starks"
+    };
+  }
 
   componentDidMount() {
     const url =
@@ -13,17 +17,13 @@ class App extends Component {
       .then(result => result.json())
       .then(data => {
         this.setState({
-          data: data.houses
+          houses: data.houses
         });
       });
   }
 
   render() {
-    const { houses } = this.state;
-    const result = houses.map((entry, index) => {
-      return <li key={index}>{entry}</li>;
-    });
-    return <ul>{result}</ul>;
+    if (!this.state.houses) return "";
   }
 }
 

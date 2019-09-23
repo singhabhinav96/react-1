@@ -1,0 +1,11 @@
+.tab-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.btn-main {
+    padding: 15px 40px;
+    background-color: white;
+    border: 2px solid gainsboro;
+}
