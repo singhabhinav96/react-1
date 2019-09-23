@@ -21,6 +21,12 @@ export class Api extends Component {
       });
   }
 
+  handleclick = () => {
+    this.setState({
+      imageUrl: ""
+    });
+    this.componentDidMount();
+  };
   render() {
     return (
       <div>
