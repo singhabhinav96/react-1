@@ -5,44 +5,43 @@ export class Api extends Component {
   constructor() {
     super();
     this.state = {
-      imageUrl: ""
+      imageUrl: "",
+      loader: true
     };
   }
 
   componentDidMount() {
     fetch("https://api.thecatapi.com/v1/images/search")
-      .then(result => {
-        return result.json();
-      })
-      .then(data => {
-        let catUrl = data;
-        this.setState({
-          imageUrl: catUrl[0].imageUrl
-        });
-      });
+      .then(result => result.json())
+      .then(data => this.setState({ imageUrl: data[0].url, loader: false }));
   }
 
-  handleclick = () => {
-    this.setState({
-      imageUrl: ""
-    });
-    this.componentDidMount();
+  handleClick = () => {
+    this.setState({ loader: true });
+    fetch("https://api.thecatapi.com/v1/images/search")
+      .then(result => result.json())
+      .then(data => this.setState({ imageUrl: data[0].url, loader: false }));
   };
 
   render() {
     return (
       <>
         <div className="image-container">
-          {this.state.imageUrl ? (
-            <img src={this.state.imageUrl} alt="catImage"></img>
+          {!this.state.loader ? (
+            <img
+              src={this.state.imageUrl}
+              width="700px"
+              height="400px"
+              alt="catImage"
+            ></img>
           ) : (
-            <div class="lds-ripple">
+            <div className="lds-ripple">
               <div></div>
               <div></div>
             </div>
           )}
         </div>
-        <button onclick={this.handleClick}>cat</button>
+        <button onClick={() => this.handleClick()}>cat</button>
       </>
     );
   }
