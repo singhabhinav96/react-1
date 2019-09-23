@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../api.css";
 
 export class Api extends Component {
   constructor() {
@@ -27,11 +28,22 @@ export class Api extends Component {
     });
     this.componentDidMount();
   };
+
   render() {
     return (
-      <div>
-        <div>{this.state.images}</div>
-      </div>
+      <>
+        <div className="image-container">
+          {this.state.imageUrl ? (
+            <img src={this.state.imageUrl} alt="catImage"></img>
+          ) : (
+            <div class="lds-ripple">
+              <div></div>
+              <div></div>
+            </div>
+          )}
+        </div>
+        <button onclick={this.handleClick}>cat</button>
+      </>
     );
   }
 }
