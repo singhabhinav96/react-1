@@ -4,7 +4,7 @@ export class Api extends Component {
   constructor() {
     super();
     this.state = {
-      result: []
+      imageUrl: ""
     };
   }
 
@@ -14,15 +14,10 @@ export class Api extends Component {
         return result.json();
       })
       .then(data => {
-        let images = this.data.result.map(pic => {
-          return (
-            <div key={pic.result}>
-              <img src={pic.images.cat} alt=""></img>
-            </div>
-          );
+        let catUrl = data;
+        this.setState({
+          imageUrl: catUrl[0].imageUrl
         });
-        this.setState({ images: images });
-        console.log(this.state.images);
       });
   }
 
